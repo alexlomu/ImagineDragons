@@ -2,13 +2,13 @@
 El link de este repositorio es: [Github](https://github.com/alexlomu/ImagineDragons)
 https://github.com/alexlomu/ImagineDragons.
 En este repositorio se responden diversas preguntas, la mayoría relacionadas con la Programación Orientada a Objetos y otras con Datasets.
-##Ejercicio de POO
+## Ejercicio de POO
 El código propuesto para resolver las diversas tareas en este ejercicio es el siguiente:
 ```
 import re
 import datetime
 
-def es_correo_valido(correo):
+def es_correo_valido(correo): #Creamos una función que nos sirve para determinar si un email es válido o no
     expresion_regular = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
     return re.match(expresion_regular, correo) is not None
 
@@ -29,16 +29,16 @@ class UserAccount():
         self.tweets = []
         self.followers = []
         self.timeline = []
-user1 = UserAccount("pepe","pepe@gmail.com", [], [], [])
+user1 = UserAccount("pepe","pepe@gmail.com", [], [], [])         #Creamos dos users 
 user2 = UserAccount("llucia","llucia@gmail.com", [], [], [])
 
-def follow(user2):
+def follow(user2): #Recibe un objeto
     user2.followers.append(user1.alias) #Añadimos el alias del user1 a la lista de followers de user2
-def tweet_user1(tweet1):
+def tweet_user1(tweet1): #Recibe una string
     user1.tweets.append(tweet1) #Añadimos el tweet a la lista de tweets de user1
     if user2.alias in user1.followers: #Si user2 sigue a user1 el tweet se añadirá al timeline junto con la fecha de publicación
         user2.timeline.append(datetime.now() + tweet1)
-def tweet_user2(tweet1):
+def tweet_user2(tweet1): #Recibe una string
     user2.tweets.append(tweet1) #Añadimos el tweet a la lista de tweets de user1
     if user1.alias in user2.followers: #Si user2 sigue a user1 el tweet se añadirá al timeline junto con la fecha de publicación
         user1.timeline.append(datetime.now() + tweet1)
@@ -116,5 +116,39 @@ class Tweet:
 ```
 
 El último ejercicio de esta sección nos hace las siguientes preguntas:
-•¿Deberá modificar los atributos timeline y tweets de la clase UserAccount (definida en el ejercicio 1) para que contenga elementos de la clase hija Retweet? Justifique su razonamiento y, si cree que hay que modificarlos, explique también cómo lo haría. 
-• ¿Deberá modificar el método def tweet(Tweet tweet1) de la clase UserAccount (definida en el ejercicio 1) para que pueda enviar también objetos de tipo Retweet? Justifique su razonamiento y, si cree que hay que modificarlo, explique también cómo lo haría.
+### •¿Deberá modificar los atributos timeline y tweets de la clase UserAccount (definida en el ejercicio 1) para que contenga elementos de la clase hija Retweet? Justifique su razonamiento y, si cree que hay que modificarlos, explique también cómo lo haría.
+Sí, porque estamos tratando de usar variables definidas en una clase hija dentro de una clase padre de esta. Para que esto funcionase tendriamos que definir previamente los elementos de Retweet que quisiesemos utilizar.
+ 
+### • ¿Deberá modificar el método def tweet(Tweet tweet1) de la clase UserAccount (definida en el ejercicio 1) para que pueda enviar también objetos de tipo Retweet? Justifique su razonamiento y, si cree que hay que modificarlo, explique también cómo lo haría.
+No, porque al ser Retweet una clase hija de Tweet puede usar los métodos definidos anteriormente sin problema.
+
+
+## Ejercicio Dataset
+Para este ejercicio nos proporcionan 3 archivos csv y nos proponen tres ejercicios.
+En el primero de ello hemos de implementar ciertas librerías
+En el segundo de ello hemos de eliminar los valores nulos del csv train para ello usaremos la funcion dropna().
+El código que nos queda es el siguiente:
+```
+import matplotlib 
+import pandas as pd 
+from plotly import graph_objs as go 
+import plotly.express as px 
+import plotly.figure_factory as ff 
+from collections import Counter
+from PIL import Image 
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+import nltk 
+from nltk.corpus import stopwords
+from tqdm import tqdm 
+import os 
+import nltk 
+import scipy
+import random 
+from spacy.util import compounding 
+from spacy.util import minibatch
+import warnings 
+warnings.filterwarnings("ignore")
+import os 
+for dirname, _, filenames in os.walk('/kaggle/input'): 
+    for filename in filenames: print(os.path.join(dirname, filename))
+```
