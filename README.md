@@ -121,3 +121,34 @@ Sí, porque estamos tratando de usar variables definidas en una clase hija dentr
  
 ### • ¿Deberá modificar el método def tweet(Tweet tweet1) de la clase UserAccount (definida en el ejercicio 1) para que pueda enviar también objetos de tipo Retweet? Justifique su razonamiento y, si cree que hay que modificarlo, explique también cómo lo haría.
 No, porque al ser Retweet una clase hija de Tweet puede usar los métodos definidos anteriormente sin problema.
+
+
+## Ejercicio Dataset
+Para este ejercicio nos proporcionan 3 archivos csv y nos proponen tres ejercicios.
+En el primero de ello hemos de implementar ciertas librerías
+En el segundo de ello hemos de eliminar los valores nulos del csv train para ello usaremos la funcion dropna().
+El código que nos queda es el siguiente:
+```
+import matplotlib 
+import pandas as pd 
+from plotly import graph_objs as go 
+import plotly.express as px 
+import plotly.figure_factory as ff 
+from collections import Counter
+from PIL import Image 
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+import nltk 
+from nltk.corpus import stopwords
+from tqdm import tqdm 
+import os 
+import nltk 
+import scipy
+import random 
+from spacy.util import compounding 
+from spacy.util import minibatch
+import warnings 
+warnings.filterwarnings("ignore")
+import os 
+for dirname, _, filenames in os.walk('/kaggle/input'): 
+    for filename in filenames: print(os.path.join(dirname, filename))
+```
