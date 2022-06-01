@@ -2,7 +2,7 @@
 El link de este repositorio es: [Github](https://github.com/alexlomu/ImagineDragons)
 https://github.com/alexlomu/ImagineDragons.
 En este repositorio se responden diversas preguntas, la mayoría relacionadas con la Programación Orientada a Objetos y otras con Datasets.
-##Ejercicio de POO
+## Ejercicio de POO
 El código propuesto para resolver las diversas tareas en este ejercicio es el siguiente:
 ```
 import re
