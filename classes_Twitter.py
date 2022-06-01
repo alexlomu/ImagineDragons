@@ -1,7 +1,7 @@
 import re
 import datetime
 
-def es_correo_valido(correo):
+def es_correo_valido(correo): #Creamos una función que nos sirve para determinar si un email es válido o no
     expresion_regular = r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
     return re.match(expresion_regular, correo) is not None
 
@@ -22,16 +22,16 @@ class UserAccount():
         self.tweets = []
         self.followers = []
         self.timeline = []
-user1 = UserAccount("pepe","pepe@gmail.com", [], [], [])
+user1 = UserAccount("pepe","pepe@gmail.com", [], [], [])         #Creamos dos users 
 user2 = UserAccount("llucia","llucia@gmail.com", [], [], [])
 
-def follow(user2):
+def follow(user2): #Recibe un objeto
     user2.followers.append(user1.alias) #Añadimos el alias del user1 a la lista de followers de user2
-def tweet_user1(tweet1):
+def tweet_user1(tweet1): #Recibe una string
     user1.tweets.append(tweet1) #Añadimos el tweet a la lista de tweets de user1
     if user2.alias in user1.followers: #Si user2 sigue a user1 el tweet se añadirá al timeline junto con la fecha de publicación
         user2.timeline.append(datetime.now() + tweet1)
-def tweet_user2(tweet1):
+def tweet_user2(tweet1): #Recibe una string
     user2.tweets.append(tweet1) #Añadimos el tweet a la lista de tweets de user1
     if user1.alias in user2.followers: #Si user2 sigue a user1 el tweet se añadirá al timeline junto con la fecha de publicación
         user1.timeline.append(datetime.now() + tweet1)
