@@ -151,4 +151,9 @@ warnings.filterwarnings("ignore")
 import os 
 for dirname, _, filenames in os.walk('/kaggle/input'): 
     for filename in filenames: print(os.path.join(dirname, filename))
+train = pd.read_csv('/csv/train.csv') 
+test = pd.read_csv('/csv/test.csv') 
+ss = pd.read_csv('/csv/sample_submission.csv')
+
+train.dropna() #Eliminamos los valores nulos del csv train
 ```
